@@ -24,17 +24,17 @@ function XMondal() {
 
     const { username, email, phone, dob } = formData;
 
-    if (!username || !email || !phone || !dob) {
-      alert("Please fill all the fields.");
-      return;
-    }
+    if (!username) {
+    alert("Please fill out the username.");
+    return;
+  }
 
-    if (!email.includes("@")) {
+    if (!email || !email.includes("@")) {
       alert("Invalid email. Please check your email address.");
       return;
     }
 
-    if (phone.length !== 10 || isNaN(phone)) {
+    if (!phone || phone.length !== 10 || isNaN(phone)) {
       alert("Invalid phone number. Please enter a 10-digit phone number.");
       return;
     }
@@ -42,10 +42,10 @@ function XMondal() {
     const selectedDate = new Date(dob);
     const today = new Date();
 
-    if (selectedDate > today) {
-      alert("Invalid date of birth. Please select a valid date.");
-      return;
-    }
+    if (!dob || selectedDate > today) {
+    alert("Invalid date of birth.");
+    return;
+  }
 
     setIsOpenForm(false);
     setFormData({
