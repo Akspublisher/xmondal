@@ -24,17 +24,13 @@ function XMondal() {
 
     const { username, email, phone, dob } = formData;
 
-    if (!username) {
-    alert("Please fill out the username.");
-    return;
-  }
 
-    if (!email || !email.includes("@")) {
+    if (!email.includes("@")) {
       alert("Invalid email. Please check your email address.");
       return;
     }
 
-    if (!phone || phone.length !== 10 || isNaN(phone)) {
+    if (phone.length !== 10 || isNaN(phone)) {
       alert("Invalid phone number. Please enter a 10-digit phone number.");
       return;
     }
@@ -42,8 +38,8 @@ function XMondal() {
     const selectedDate = new Date(dob);
     const today = new Date();
 
-    if (!dob || selectedDate > today) {
-    alert("Invalid date of birth.");
+    if (selectedDate > today) {
+    alert("Invalid date of birth. Date of birth cannot be in the future.");
     return;
   }
 
@@ -75,9 +71,7 @@ function XMondal() {
                 }}>
                     Open Form</button>
                </div>     
-             {/* {!isOpenForm && (
-            <button onClick={() => setIsOpenForm(true)}>Open Form</button>
-                )} */}
+             
         {isOpenForm && (
         <div
           className="modal"
@@ -95,6 +89,7 @@ function XMondal() {
                 placeholder="Username"
                 value={formData.username}
                 onChange={handleChange}
+                required
               />
 
                 <label>Email Address:</label>        
@@ -104,6 +99,7 @@ function XMondal() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
+                required
               />
 
                 <label>Phone Number:</label>    
@@ -113,6 +109,7 @@ function XMondal() {
                 placeholder="Phone"
                 value={formData.phone}
                 onChange={handleChange}
+                required
               />
                 <label>Date of Birth:</label>    
               <input
@@ -120,6 +117,7 @@ function XMondal() {
                 type="date"
                 value={formData.dob}
                 onChange={handleChange}
+                required
               />
 
               <button
