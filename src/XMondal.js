@@ -22,7 +22,8 @@ function XMondal() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { username, email, phone, dob } = formData;
+    const {  email, phone, dob } = formData;
+
 
 
     if (!email.includes("@")) {
